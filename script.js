@@ -110,7 +110,7 @@ const projectsData = [
         description: "AI-powered commercial lease PDF ingestion using Google Gemini 2.5 Flash with Pydantic schema-locked extraction. Portfolio KPIs, deterministic risk flags, and natural-language Q&A over extracted data. Deployed live on Streamlit Cloud.",
         tech: ["Gemini 2.5 Flash", "Streamlit", "Pydantic v2", "pdfplumber", "Python"],
         github: "https://github.com/SarthakZende379/lease-analyzer",
-        live: "",
+        live: "https://lease-portfolio-analyzer.streamlit.app/",
         date: "May 2026"
     },
     {
