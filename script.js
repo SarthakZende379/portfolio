@@ -98,6 +98,22 @@ class ConstellationBackground {
 // Projects Data - Easy to add new projects here
 const projectsData = [
     {
+        title: "LLM Inference Benchmarker",
+        description: "Real-time benchmarking dashboard firing the same prompt at multiple free-tier LLM providers concurrently. Measures TTFT, inter-token latency, and tokens/sec using a LangGraph pipeline with async fan-out. Live Streamlit dashboard with p50/p95 distributions and SQLite run history.",
+        tech: ["LangGraph", "LangChain", "Streamlit", "SQLite", "asyncio", "Groq", "Gemini"],
+        github: "https://github.com/SarthakZende379/llm-bench",
+        live: "https://llm-benchmarking-free.streamlit.app/",
+        date: "May 2026"
+    },
+    {
+        title: "Lease Portfolio Analyzer",
+        description: "AI-powered commercial lease PDF ingestion using Google Gemini 2.5 Flash with Pydantic schema-locked extraction. Portfolio KPIs, deterministic risk flags, and natural-language Q&A over extracted data. Deployed live on Streamlit Cloud.",
+        tech: ["Gemini 2.5 Flash", "Streamlit", "Pydantic v2", "pdfplumber", "Python"],
+        github: "https://github.com/SarthakZende379/lease-analyzer",
+        live: "",
+        date: "May 2026"
+    },
+    {
         title: "Spotify ETL Data Pipeline",
         description: "Built end-to-end ETL pipeline to extract 150-track Spotify playlist daily using CloudWatch + Lambda, transform with Pandas, and store results in Amazon S3. Achieved sub 2s Lambda runtime and 100% pipeline success over 30+ daily executions.",
         image: "https://github.com/SarthakZende379/Spotify-ETL-Data-Pipeline-using-AWS-Services/raw/main/Screenshots/Spotify_Data_Pipeline.png",
@@ -135,25 +151,29 @@ function createProjectCards() {
         const projectCard = document.createElement('div');
         projectCard.className = 'project-card';
         
+        const image = project.image;
+        const techStack = project.techStack || project.tech || [];
+        const githubLink = project.githubLink || project.github || '';
+        const liveLink = project.liveLink || project.live || '';
+        const duration = project.duration || project.date || '';
+
         projectCard.innerHTML = `
-            <div class="project-image">
-                <img src="${project.image}" alt="${project.title}">
-            </div>
+            ${image ? `<div class="project-image"><img src="${image}" alt="${project.title}"></div>` : ''}
             <div class="project-content">
                 <h3 class="project-title">${project.title}</h3>
-                <p class="project-duration">${project.duration}</p>
+                <p class="project-duration">${duration}</p>
                 <p class="project-description">${project.description}</p>
                 <div class="project-tech">
-                    ${project.techStack.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                    ${techStack.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
                 </div>
                 <div class="project-links">
-                    ${project.githubLink ? `
-                        <a href="${project.githubLink}" target="_blank" class="project-link">
+                    ${githubLink ? `
+                        <a href="${githubLink}" target="_blank" class="project-link">
                             <i class="fab fa-github"></i> Code
                         </a>
                     ` : ''}
-                    ${project.liveLink ? `
-                        <a href="${project.liveLink}" target="_blank" class="project-link">
+                    ${liveLink ? `
+                        <a href="${liveLink}" target="_blank" class="project-link">
                             <i class="fas fa-external-link-alt"></i> Live Demo
                         </a>
                     ` : ''}
